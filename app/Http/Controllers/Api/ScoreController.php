@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Highscore;
+use Illuminate\Support\Facades\Validator;
 
 class ScoreController extends Controller
 {
@@ -16,7 +18,28 @@ class ScoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $decryptedData = $request->get('data');
+
+        $validator = Validator::make($decryptedData, [
+            'nickname' => 'required|string|max:100',
+            'score' => 'required|integer',
+            'source' => 'required|string',
+            'project_id' => 'required|integer'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'Error',
+                ...$decryptedData
+            ], 400);
+        }
+
+        Highscore::create($decryptedData);
+
+        return response()->json([
+            'status' => 'OK',
+            ...$decryptedData
+        ]);
     }
 
     /**
