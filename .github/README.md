@@ -1,5 +1,7 @@
 # Score API: Laravel implementation
 
+Simple score API with basic encryption.
+
 ## Seeding in order
 
 ```
