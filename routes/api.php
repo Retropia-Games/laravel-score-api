@@ -15,7 +15,8 @@ use App\Http\Controllers\Api\ScoreController;
 |
 */
 
-Route::controller(ScoreController::class)->prefix("score")->group(function() {
+Route::controller(ScoreController::class)->prefix("score")->group(function () {
     // Get scores for specific project
     Route::get('/{name}/{count?}', "show");
+    Route::post('/{name}/', "store")->middleware('valid.encrypted');
 });
