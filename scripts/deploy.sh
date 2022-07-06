@@ -19,7 +19,7 @@ chmod +x ${COMPOSER_PATH}
 
 # Enter maintenance mode or return true
 # if already is in maintenance mode
-(php artisan down) || true
+(${PHP_PATH} artisan down) || true
 
 # Pull the latest version of the app
 git pull origin production
