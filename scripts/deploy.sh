@@ -37,6 +37,10 @@ ${PHP_PATH} artisan optimize
 # Run database migrations
 ${PHP_PATH} artisan migrate --force
 
+${PHP_PATH} artisan config:cache
+${PHP_PATH} artisan route:cache
+${PHP_PATH} artisan view:cache
+
 # Exit maintenance mode
 ${PHP_PATH} artisan up
 
