@@ -1,0 +1,22 @@
+
+
+name: Deploy
+on:
+  push:
+    branches:
+      - production
+jobs:
+  deploy:
+    name: Deploy to production server
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+            cd domains/retropia.pl/public_html/api/laravel-score-api/
+            ./scripts/deploy.sh
