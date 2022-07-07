@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
 
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <style>

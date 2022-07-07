@@ -28,7 +28,7 @@ class EnsureEncryptedDataIsValid
         $project = Project::where('name', $request->route()->name)
             ->firstOrFail();
 
-        $iv = env("ENCRYPTION_IV");
+        $iv = config('custom.encryption_iv');
 
         $decrypted = trim(Encryption::decrypt($request->data, $project->encryption_key, $iv));
         $data = json_decode($decrypted, true);
