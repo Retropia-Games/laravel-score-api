@@ -23,8 +23,7 @@ chmod +x ${COMPOSER_PATH}
 (${PHP_PATH} artisan down) || true
 
 # Pull the latest version of the app
-git stash
-git stash drop
+git reset --hard
 git pull origin production
 
 # Install composer dependencies
